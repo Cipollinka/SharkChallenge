@@ -98,7 +98,7 @@ const ProfileScreen = () => {
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
-                backgroundColor: '#215174',
+                // backgroundColor: '#215174',
                 width: 'auto',
                 borderRadius: '50%',
                 alignSelf: 'center',

@@ -179,118 +179,118 @@ const quotes = [
 
 const challenges = [
   {
-    id: 1, 
-    title: 'Ocean Inspiration', 
+    id: 1,
+    title: 'Ocean Inspiration',
     challengeDescrip: 'Write three positive thoughts for today.',
   },
   {
-    id: 2, 
-    title: 'Ocean Sounds', 
+    id: 2,
+    title: 'Ocean Sounds',
     challengeDescrip: 'Listen to 10 minutes of ocean sounds.',
   },
   {
-    id: 3, 
-    title: 'Shark Reading', 
+    id: 3,
+    title: 'Shark Reading',
     challengeDescrip: 'Read one article about the ocean or marine life.',
   },
   {
-    id: 4, 
-    title: 'Shark Drawing', 
+    id: 4,
+    title: 'Shark Drawing',
     challengeDescrip: 'Draw or create a picture featuring a shark.',
   },
   {
-    id: 5, 
-    title: 'Shark Strategist', 
+    id: 5,
+    title: 'Shark Strategist',
     challengeDescrip: 'Write your plan for the upcoming week.',
   },
   {
-    id: 6, 
-    title: 'Quiet Waves', 
+    id: 6,
+    title: 'Quiet Waves',
     challengeDescrip: 'Spend 10 minutes in silence, focusing on your breath.',
   },
   {
-    id: 7, 
-    title: 'Sea Quest', 
+    id: 7,
+    title: 'Sea Quest',
     challengeDescrip: 'Explore a new interesting place in your city.',
   },
   {
-    id: 8, 
-    title: 'Big Waves', 
+    id: 8,
+    title: 'Big Waves',
     challengeDescrip: 'Write three things you’re grateful for today.',
   },
   {
-    id: 9, 
-    title: 'Marine Menu', 
+    id: 9,
+    title: 'Marine Menu',
     challengeDescrip: 'Create a list of healthy dishes you\'d like to try.',
   },
   {
-    id: 10, 
-    title: 'Fishy Joy', 
+    id: 10,
+    title: 'Fishy Joy',
     challengeDescrip: 'Write three things that made you happy today.',
   },
   {
-    id: 11, 
-    title: 'Shark Organizer', 
+    id: 11,
+    title: 'Shark Organizer',
     challengeDescrip: 'Organize your workspace or relaxation area.',
   },
   {
-    id: 12, 
-    title: 'Ocean Helper', 
+    id: 12,
+    title: 'Ocean Helper',
     challengeDescrip: 'Do something kind for someone or perform a good deed.',
   },
   {
-    id: 13, 
-    title: 'Healthy Ocean', 
+    id: 13,
+    title: 'Healthy Ocean',
     challengeDescrip: 'Create a list of healthy meals you can prepare.',
   },
   {
-    id: 14, 
-    title: 'Shark Reflections', 
+    id: 14,
+    title: 'Shark Reflections',
     challengeDescrip: 'Write your goals for the next month.',
   },
   {
-    id: 15, 
-    title: 'Shark Time', 
+    id: 15,
+    title: 'Shark Time',
     challengeDescrip: 'Spend time outdoors — take a walk in nature.',
   },
   {
-    id: 16, 
-    title: 'Ocean Journey', 
+    id: 16,
+    title: 'Ocean Journey',
     challengeDescrip: 'Sign up for a new online course or webinar.',
   },
   {
-    id: 17, 
-    title: 'Shark Inspiration', 
+    id: 17,
+    title: 'Shark Inspiration',
     challengeDescrip: 'Watch a video on oceans or nature.',
   },
   {
-    id: 18, 
-    title: 'Save the Ocean', 
+    id: 18,
+    title: 'Save the Ocean',
     challengeDescrip: 'Write a short essay on the importance of preserving nature.',
   },
   {
-    id: 19, 
-    title: 'Sea Cleaning', 
+    id: 19,
+    title: 'Sea Cleaning',
     challengeDescrip: 'Throw away five unnecessary items in your home.',
   },
   {
-    id: 20, 
-    title: 'Shark Creator', 
+    id: 20,
+    title: 'Shark Creator',
     challengeDescrip: 'Write a story or short narrative about a shark.',
   },
   {
-    id: 21, 
-    title: 'Shark Memory', 
+    id: 21,
+    title: 'Shark Memory',
     challengeDescrip: 'Write about important events of the day in your journal.',
   },
   {
-    id: 22, 
-    title: 'Shark Painting', 
+    id: 22,
+    title: 'Shark Painting',
     challengeDescrip: 'Create an underwater landscape with watercolor or digitally.',
   },
   {
-    id: 23, 
-    title: 'Ocean Dreams', 
+    id: 23,
+    title: 'Ocean Dreams',
     challengeDescrip: 'Write about your dreams and aspirations.',
   },
   {
@@ -382,11 +382,11 @@ const HomeScreen = () => {
     const pickedTime = new Date(pickedAt).getTime();
     const currentTime = new Date().getTime();
     const timeDifference = (pickedTime + 10 * 60 * 1000) - currentTime;
-  
+
     if (timeDifference > 0) {
       const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
       const seconds = Math.floor((timeDifference / 1000) % 60);
-  
+
       setTimeLeft(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
     } else {
       setTimeLeft('Lost');
@@ -397,7 +397,7 @@ const HomeScreen = () => {
       }
     }
   };
-  
+
   const handleChallengeResult = async (isCompleted) => {
     const result = isCompleted ? 'Done' : 'Lost';
     const endDate = new Date().toISOString();
@@ -406,21 +406,21 @@ const HomeScreen = () => {
       endDate,
       result,
     };
-  
+
     try {
       const existingResults = await AsyncStorage.getItem('challengeResults');
       const results = existingResults ? JSON.parse(existingResults) : [];
       results.push(challengeResult);
       await AsyncStorage.setItem('challengeResults', JSON.stringify(results));
-  
+
       const completedChallenges = await AsyncStorage.getItem('completedChallenges');
       const failedChallenges = await AsyncStorage.getItem('failedChallenges');
       const newCompletedChallenges = isCompleted ? (parseInt(completedChallenges) || 0) + 1 : parseInt(completedChallenges) || 0;
       const newFailedChallenges = !isCompleted ? (parseInt(failedChallenges) || 0) + 1 : parseInt(failedChallenges) || 0;
-  
+
       await AsyncStorage.setItem('completedChallenges', newCompletedChallenges.toString());
       await AsyncStorage.setItem('failedChallenges', newFailedChallenges.toString());
-  
+
       if (isCompleted) {
         const userXP = await AsyncStorage.getItem('userXP');
         const newUserXP = (parseInt(userXP) || 0) + 10;
@@ -511,7 +511,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#06263D' }}>
-
+      <Image style={{flex: 1, width: '100%', height: '110%', position: 'absolute'}} source={require('../assets/images/bg.png')} />
 
       {selectedPage === 'Home' ? (
         <View style={{ width: '88%', flex: 1, paddingHorizontal: 4 }}>

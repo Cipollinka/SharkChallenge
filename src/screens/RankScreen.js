@@ -1,8 +1,6 @@
 import { View, Text, SafeAreaView, Dimensions, ScrollView, Image, TouchableOpacity, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNFS from 'react-native-fs';
-import { id } from 'date-fns/locale';
 
 const fontOrbitronSemiBold = 'Orbitron-SemiBold';
 const fontMontserratRegular = 'Montserrat-Regular';
@@ -11,25 +9,25 @@ const fontMontserratSemiBold = 'Montserrat-SemiBold';
 const backgroundImages = [
     {
         id: 1,
-        image: require('../assets/images/BackgroundShark1.png'),
+        image: require('../assets/images/bg.png'),
         requiredLevel: 5,
         name: 'BackgroundShark1.png',
     },
     {
         id: 2,
-        image: require('../assets/images/BackgroundShark2.png'),
+        image: require('../assets/images/bg.png'),
         requiredLevel: 10,
         name: 'BackgroundShark2.png',
     },
     {
         id: 3,
-        image: require('../assets/images/BackgroundShark3.png'),
+        image: require('../assets/images/bg.png'),
         requiredLevel: 15,
         name: 'BackgroundShark3.png',
     },
     {
         id: 4,
-        image: require('../assets/images/BackgroundShark4.png'),
+        image: require('../assets/images/bg.png'),
         requiredLevel: 20,
         name: 'BackgroundShark4.png',
     },
@@ -111,7 +109,8 @@ const RankScreen = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#06263D', width: '100%' }}>
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', width: '100%' }}>
+
             <Text
                 style={{
                     fontFamily: fontOrbitronSemiBold,
